@@ -5,7 +5,7 @@
 namespace TeamService.Migrations
 {
     /// <inheritdoc />
-    public partial class AddedTeamAndTeamParticipantTable : Migration
+    public partial class AddedTeamsAndTeamParticipantsTables : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

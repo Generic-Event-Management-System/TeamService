@@ -11,8 +11,8 @@ using TeamService.Persistence;
 namespace TeamService.Migrations
 {
     [DbContext(typeof(TeamDbContext))]
-    [Migration("20241102192357_AddedTeamAndTeamParticipantTable")]
-    partial class AddedTeamAndTeamParticipantTable
+    [Migration("20241102221749_AddedTeamsAndTeamParticipantsTables")]
+    partial class AddedTeamsAndTeamParticipantsTables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -68,13 +68,11 @@ namespace TeamService.Migrations
 
             modelBuilder.Entity("TeamService.Models.Entities.TeamParticipant", b =>
                 {
-                    b.HasOne("TeamService.Models.Entities.Team", "Team")
+                    b.HasOne("TeamService.Models.Entities.Team", null)
                         .WithMany("Participants")
                         .HasForeignKey("TeamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Team");
                 });
 
             modelBuilder.Entity("TeamService.Models.Entities.Team", b =>

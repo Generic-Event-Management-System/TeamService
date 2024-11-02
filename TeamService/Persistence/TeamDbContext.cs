@@ -13,6 +13,12 @@ namespace TeamService.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<TeamParticipant>()
+                .HasOne<Team>()
+                .WithMany(t => t.Participants)
+                .HasForeignKey("TeamId")
+                .IsRequired();
         }
     }
 }

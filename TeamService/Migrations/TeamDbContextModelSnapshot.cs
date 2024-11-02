@@ -65,13 +65,11 @@ namespace TeamService.Migrations
 
             modelBuilder.Entity("TeamService.Models.Entities.TeamParticipant", b =>
                 {
-                    b.HasOne("TeamService.Models.Entities.Team", "Team")
+                    b.HasOne("TeamService.Models.Entities.Team", null)
                         .WithMany("Participants")
                         .HasForeignKey("TeamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Team");
                 });
 
             modelBuilder.Entity("TeamService.Models.Entities.Team", b =>
