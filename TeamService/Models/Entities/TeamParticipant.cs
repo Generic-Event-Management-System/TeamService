@@ -4,6 +4,5 @@
     {
         public int Id { get; set; }
         public required int ParticipantId { get; set; }
-        public required Team Team { get; set; }
     }
 }
