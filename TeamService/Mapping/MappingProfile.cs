@@ -16,6 +16,15 @@ namespace TeamService.Mapping
                 .ForMember(dest => dest.Participants,
                     opt => opt.MapFrom((src, dest) => src.Participants
                         .Select(id => new TeamParticipant { ParticipantId = id }).ToList()));
+
+            CreateMap<Team, TeamRequestDto>()
+               .ForMember(dest => dest.Participants,
+                   opt => opt.MapFrom(src => src.Participants.Select(p => p.ParticipantId).ToList()));
+
+            CreateMap<TeamRequestDto, Team>()
+                .ForMember(dest => dest.Participants,
+                    opt => opt.MapFrom((src, dest) => src.Participants
+                        .Select(id => new TeamParticipant { ParticipantId = id }).ToList()));
         }
     }
 }

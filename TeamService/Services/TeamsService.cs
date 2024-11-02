@@ -19,14 +19,14 @@ namespace TeamService.Services
             _mapper = mapper;
         }
 
-        public async Task<Team> CreateTeam(TeamDto teamDto)
+        public async Task<TeamDto> CreateTeam(TeamRequestDto teamDto)
         {
             var team = _mapper.Map<Team>(teamDto);
 
             await _dbContext.Teams.AddAsync(team);
             await _dbContext.SaveChangesAsync();
 
-            return team;
+            return _mapper.Map<TeamDto>(team);
         }
 
         public async Task<IEnumerable<TeamDto>> GetTeams()

@@ -5,7 +5,7 @@ namespace TeamService.Services.Contracts
 {
     public interface ITeamsService
     {
-        Task<Team> CreateTeam(TeamDto teamDto);
+        Task<TeamDto> CreateTeam(TeamRequestDto teamDto);
         Task<IEnumerable<TeamDto>> GetTeams();
         Task<TeamDto> GetTeam(int teamId);
     }

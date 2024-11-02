@@ -17,7 +17,7 @@ namespace TeamService.Controllers.Api
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateTeam(TeamDto teamDto)
+        public async Task<IActionResult> CreateTeam(TeamRequestDto teamDto)
         {
             return Ok( await _teamsService.CreateTeam(teamDto));
         }
