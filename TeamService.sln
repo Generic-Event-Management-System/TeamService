@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamService", "TeamService\TeamService.csproj", "{A2EA4661-64A1-41A0-96FC-9029D68270E5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2EA4661-64A1-41A0-96FC-9029D68270E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2EA4661-64A1-41A0-96FC-9029D68270E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2EA4661-64A1-41A0-96FC-9029D68270E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2EA4661-64A1-41A0-96FC-9029D68270E5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F91A4D88-074D-44E5-AB9F-C5EAFEC648A2}
+	EndGlobalSection
+EndGlobal
