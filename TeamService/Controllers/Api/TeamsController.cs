@@ -21,5 +21,11 @@ namespace TeamService.Controllers.Api
         {
             return Ok( await _teamsService.CreateTeam(teamDto));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetTeams()
+        {
+            return Ok( await _teamsService.GetTeams());
+        }
     }
 }

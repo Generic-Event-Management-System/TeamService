@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using TeamService.Models.Dto;
 using TeamService.Models.Entities;
 using TeamService.Persistence;
@@ -25,6 +26,12 @@ namespace TeamService.Services
             await _dbContext.SaveChangesAsync();
 
             return team;
+        }
+
+        public async Task<IEnumerable<TeamDto>> GetTeams()
+        {
+            var teams = await _dbContext.Teams.Include(t => t.Participants).ToListAsync();
+            return _mapper.Map<IEnumerable<TeamDto>>(teams);
         }
     }
 }
