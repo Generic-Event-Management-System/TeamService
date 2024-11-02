@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using TeamService.ExceptionHandling;
 using TeamService.Persistence;
 using TeamService.Services;
 using TeamService.Services.Contracts;
@@ -17,6 +18,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
