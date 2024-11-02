@@ -1,6 +1,10 @@
-﻿namespace TeamService.Services.Contracts
+﻿using TeamService.Models.Dto;
+using TeamService.Models.Entities;
+
+namespace TeamService.Services.Contracts
 {
     public interface ITeamsService
     {
+        Task<Team> CreateTeam(TeamDto teamDto);
     }
 }

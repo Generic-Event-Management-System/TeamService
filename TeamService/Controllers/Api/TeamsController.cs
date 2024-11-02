@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TeamService.Models.Dto;
 using TeamService.Services.Contracts;
 
 namespace TeamService.Controllers.Api
@@ -13,6 +14,12 @@ namespace TeamService.Controllers.Api
         public TeamsController(ITeamsService teamsService) 
         {
             _teamsService = teamsService;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateTeam(TeamDto teamDto)
+        {
+            return Ok( await _teamsService.CreateTeam(teamDto));
         }
     }
 }
