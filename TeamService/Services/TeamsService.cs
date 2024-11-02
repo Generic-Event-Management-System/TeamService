@@ -53,6 +53,15 @@ namespace TeamService.Services
             return _mapper.Map<TeamDto>(team);
         }
 
+        public async Task DeleteTeam(int teamId)
+        {
+            var team = await GetTeamOrThrowNotFoundException(teamId);
+
+            _dbContext.Remove(team);
+
+            await _dbContext.SaveChangesAsync();
+        }
+
         private async Task<Team> GetTeamOrThrowNotFoundException(int teamId)
         {
             var team = await _dbContext.Teams.Include(t => t.Participants).FirstOrDefaultAsync(t => t.Id == teamId);

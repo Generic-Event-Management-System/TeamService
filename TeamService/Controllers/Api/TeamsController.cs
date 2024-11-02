@@ -39,5 +39,12 @@ namespace TeamService.Controllers.Api
         {
             return Ok(await _teamsService.UpdateTeam(id, teamRequestDto));
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTeam(int id)
+        {
+            await _teamsService.DeleteTeam(id);
+            return NoContent();
+        }
     }
 }
