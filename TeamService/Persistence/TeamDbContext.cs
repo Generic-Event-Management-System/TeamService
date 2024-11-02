@@ -5,8 +5,8 @@ namespace TeamService.Persistence
 {
     public class TeamDbContext : DbContext
     {
-        DbSet<Team> Teams { get; set; }
-        DbSet<TeamParticipant> TeamParticipants { get; set; }
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<TeamParticipant> TeamParticipants { get; set; }
 
         public TeamDbContext(DbContextOptions<TeamDbContext> options) : base(options) { }
 
