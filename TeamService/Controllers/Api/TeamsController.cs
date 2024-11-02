@@ -27,5 +27,11 @@ namespace TeamService.Controllers.Api
         {
             return Ok( await _teamsService.GetTeams());
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetTeam(int id)
+        {
+            return Ok( await _teamsService.GetTeam(id));
+        }
     }
 }
