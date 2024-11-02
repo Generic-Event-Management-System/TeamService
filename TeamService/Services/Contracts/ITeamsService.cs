@@ -8,5 +8,6 @@ namespace TeamService.Services.Contracts
         Task<TeamDto> CreateTeam(TeamRequestDto teamDto);
         Task<IEnumerable<TeamDto>> GetTeams();
         Task<TeamDto> GetTeam(int teamId);
+        Task<TeamDto> UpdateTeam(int teamId, TeamRequestDto teamRequestDto);
     }
 }

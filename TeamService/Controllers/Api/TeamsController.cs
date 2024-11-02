@@ -33,5 +33,11 @@ namespace TeamService.Controllers.Api
         {
             return Ok( await _teamsService.GetTeam(id));
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateTeam(int id, TeamRequestDto teamRequestDto)
+        {
+            return Ok(await _teamsService.UpdateTeam(id, teamRequestDto));
+        }
     }
 }

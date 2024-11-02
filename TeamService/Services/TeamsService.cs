@@ -42,9 +42,20 @@ namespace TeamService.Services
             return _mapper.Map<TeamDto>(team);
         }
 
+        public async Task<TeamDto> UpdateTeam(int teamId, TeamRequestDto teamRequestDto)
+        {
+            var team = await GetTeamOrThrowNotFoundException(teamId);
+
+            _mapper.Map(teamRequestDto, team);
+
+            await _dbContext.SaveChangesAsync();
+
+            return _mapper.Map<TeamDto>(team);
+        }
+
         private async Task<Team> GetTeamOrThrowNotFoundException(int teamId)
         {
-            var team = await _dbContext.Teams.FirstOrDefaultAsync(t => t.Id == teamId);
+            var team = await _dbContext.Teams.Include(t => t.Participants).FirstOrDefaultAsync(t => t.Id == teamId);
 
             if (team == null)
                 throw new NotFoundException("Team not found.");
