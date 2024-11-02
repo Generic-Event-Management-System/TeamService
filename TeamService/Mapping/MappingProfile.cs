@@ -6,10 +6,16 @@ namespace TeamService.Mapping
 {
     public class MappingProfile : Profile
     {
-        public MappingProfile() 
+        public MappingProfile()
         {
-            CreateMap<Team, TeamDto>();
-            CreateMap<TeamDto, TeamDto>();
+            CreateMap<Team, TeamDto>()
+                .ForMember(dest => dest.Participants,
+                    opt => opt.MapFrom(src => src.Participants.Select(p => p.ParticipantId).ToList()));
+
+            CreateMap<TeamDto, Team>()
+                .ForMember(dest => dest.Participants,
+                    opt => opt.MapFrom((src, dest) => src.Participants
+                        .Select(id => new TeamParticipant { ParticipantId = id }).ToList()));
         }
     }
 }
