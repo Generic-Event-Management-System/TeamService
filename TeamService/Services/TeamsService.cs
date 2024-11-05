@@ -12,21 +12,30 @@ namespace TeamService.Services
     {
         private readonly TeamDbContext _dbContext;
         private readonly IMapper _mapper;
+        private readonly IParticipantsServiceClient _participantsServiceClient;
 
-        public TeamsService(TeamDbContext dbContext, IMapper mapper)
+        public TeamsService(TeamDbContext dbContext, IMapper mapper, IParticipantsServiceClient participantsServiceClient)
         {
             _dbContext = dbContext;
             _mapper = mapper;
+            _participantsServiceClient = participantsServiceClient;
         }
 
         public async Task<TeamDto> CreateTeam(TeamRequestDto teamDto)
         {
-            var team = _mapper.Map<Team>(teamDto);
+            var areParticipantsValid = await _participantsServiceClient.CheckParticipantsExists(teamDto.Participants);
 
-            await _dbContext.Teams.AddAsync(team);
-            await _dbContext.SaveChangesAsync();
+            if (areParticipantsValid)
+            {
+                var team = _mapper.Map<Team>(teamDto);
 
-            return _mapper.Map<TeamDto>(team);
+                await _dbContext.Teams.AddAsync(team);
+                await _dbContext.SaveChangesAsync();
+
+                return _mapper.Map<TeamDto>(team);
+            }
+            else
+                throw new BadRequestException("One or more participant IDs are invalid");  
         }
 
         public async Task<IEnumerable<TeamDto>> GetTeams()
