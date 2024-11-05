@@ -53,13 +53,20 @@ namespace TeamService.Services
 
         public async Task<TeamDto> UpdateTeam(int teamId, TeamRequestDto teamRequestDto)
         {
-            var team = await GetTeamOrThrowNotFoundException(teamId);
+            var areParticipantsValid = await _participantsServiceClient.CheckParticipantsExists(teamRequestDto.Participants);
 
-            _mapper.Map(teamRequestDto, team);
+            if (areParticipantsValid) 
+            {
+                var team = await GetTeamOrThrowNotFoundException(teamId);
 
-            await _dbContext.SaveChangesAsync();
+                _mapper.Map(teamRequestDto, team);
 
-            return _mapper.Map<TeamDto>(team);
+                await _dbContext.SaveChangesAsync();
+
+                return _mapper.Map<TeamDto>(team);
+            }
+            else
+                throw new BadRequestException("One or more participant IDs are invalid");
         }
 
         public async Task DeleteTeam(int teamId)
