@@ -23,6 +23,12 @@ namespace TeamService.ExceptionHandling
                 context.Response.ContentType = "application/json";
                 await context.Response.WriteAsync(ex.Message);
             }
+            catch(BadRequestException ex)
+            {
+                context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                context.Response.ContentType = "application/json";
+                await context.Response.WriteAsync(ex.Message);
+            }
         }
     }
 }
