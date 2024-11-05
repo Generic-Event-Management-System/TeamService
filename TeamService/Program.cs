@@ -11,6 +11,12 @@ builder.Services.AddDbContext<TeamDbContext>(options =>
 
 builder.Services.AddAutoMapper(typeof(Program));
 
+builder.Services.AddHttpClient<IParticipantsServiceClient, ParticipantsServiceClient>(client => 
+{
+    var baseUrl = builder.Configuration["ParticipantsService:BaseURL"];
+    client.BaseAddress = new Uri(baseUrl ?? string.Empty);
+});
+
 // Add services to the container.
 builder.Services.AddScoped<ITeamsService,TeamsService>();
 
