@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using TeamService.ExceptionHandling;
+using SharedUtilities.Middleware;
 using TeamService.Persistence;
 using TeamService.Services;
 using TeamService.Services.Contracts;

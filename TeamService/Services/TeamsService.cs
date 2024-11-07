@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using TeamService.ExceptionHandling;
+using SharedUtilities.CustomExceptions;
 using TeamService.Models.Dto;
 using TeamService.Models.Entities;
 using TeamService.Persistence;

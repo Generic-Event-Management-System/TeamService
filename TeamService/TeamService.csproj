@@ -21,4 +21,10 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="SharedUtilities">
+      <HintPath>..\..\libs\SharedUtilities.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
